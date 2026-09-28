@@ -1,0 +1,16 @@
+missionary_name,companion_1_name,companion_2_name,current_area,next_area,going_home,new_missionary,is_male
+missionary_1,missionary_16,NaN,La Spezia,Office,TRUE,FALSE,TRUE
+missionary_2,missionary_17,NaN,Pisa,Bologna 1,FALSE,FALSE,TRUE
+missionary_3,missionary_18,NaN,Livorno,Bologna 2,FALSE,FALSE,FALSE
+missionary_4,missionary_19,NaN,Prato,La Spezia,FALSE,FALSE,TRUE
+missionary_5,missionary_20,missionary_6,Firenze 1,Bologna 2,FALSE,FALSE,FALSE
+missionary_6,missionary_20,missionary_5,Firenze 1,Arezzo,FALSE,FALSE,FALSE
+missionary_7,missionary_21,NaN,Firenze 2,Office,TRUE,FALSE,TRUE
+missionary_8,missionary_22,NaN,Firenze 3,Genova,FALSE,FALSE,TRUE
+missionary_9,missionary_23,NaN,Arezzo,Bologna 2,FALSE,FALSE,FALSE
+missionary_10,missionary_24,NaN,Siena,Genova,FALSE,FALSE,TRUE
+missionary_11,missionary_25,NaN,Genova,Firenze 3,FALSE,FALSE,TRUE
+missionary_12,missionary_26,NaN,Bologna 1,Pisa,FALSE,FALSE,TRUE
+missionary_13,missionary_27,NaN,Bologna 2,Firenze 1,FALSE,FALSE,FALSE
+missionary_14,missionary_28,NaN,Office,Genova,FALSE,TRUE,TRUE
+missionary_15,missionary_29,NaN,Office,Firenze 2,FALSE,TRUE,TRUE
