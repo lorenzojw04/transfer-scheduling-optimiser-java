@@ -11,6 +11,7 @@ import java.nio.file.Path;
  */
 public class Main {
 
+    //if the user passes a filename use that, unless just use the default csv
     public static void main(String[] args) throws IOException {
         Path csvPath = Path.of(args.length > 0 ? args[0] : "test_environment.csv");
 

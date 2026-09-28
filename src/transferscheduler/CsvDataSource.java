@@ -11,12 +11,13 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Java equivalent of: environment = pd.read_csv("test_environment.csv")
+ * Java equivalent of: environment = pd.read_csv("test_environment.csv") from the python project
  *
  * Mimics the parts of pandas behaviour the project relies on:
  *  - columns are found by header name (not by position)
  *  - "NaN" / blank cells become missing (null)
  *  - TRUE/FALSE (any capitalisation) become booleans
+ * This was done just to make the carry over from python seamless
  */
 public class CsvDataSource implements DataSource {
 
@@ -26,11 +27,13 @@ public class CsvDataSource implements DataSource {
             "1.#IND", "1.#QNAN", "<NA>", "N/A", "NA", "NULL", "NaN", "None",
             "n/a", "nan", "null");
 
+            //store the path to the CSV file
     private final Path path;
 
     public CsvDataSource(Path path) {
         this.path = path;
     }
+
 
     @Override
     public List<Missionary> load() throws IOException {
@@ -39,18 +42,20 @@ public class CsvDataSource implements DataSource {
             throw new IOException("CSV file is empty: " + path);
         }
 
-        // Map header names -> column index
+        // Map header names -> column index (admin stuff)
         List<String> header = splitLine(lines.get(0));
         Map<String, Integer> column = new HashMap<>();
         for (int i = 0; i < header.size(); i++) {
             column.put(header.get(i).trim(), i);
         }
 
+        //loop over every data row here and split each row into cells
         List<Missionary> missionaries = new ArrayList<>();
         for (int i = 1; i < lines.size(); i++) {
             if (lines.get(i).isBlank()) continue;   // pandas skips blank lines too
             List<String> cells = splitLine(lines.get(i));
 
+            //create a missionary object with necessary conversions
             missionaries.add(new Missionary(
                     text(cells, column, "missionary_name"),
                     text(cells, column, "companion_1_name"),
@@ -64,7 +69,7 @@ public class CsvDataSource implements DataSource {
         return missionaries;
     }
 
-    /** Returns the cell as text, or null if it is a "missing" value. */
+    /** Returns the cell as text, or null if it is a missing value. */
     private String text(List<String> cells, Map<String, Integer> column, String name) {
         Integer index = column.get(name);
         if (index == null) {
@@ -74,6 +79,7 @@ public class CsvDataSource implements DataSource {
         return MISSING_VALUES.contains(value) ? null : value;
     }
 
+    //same as text, but also converts "true" and "false" into a real boolean
     private boolean bool(List<String> cells, Map<String, Integer> column, String name) {
         String value = text(cells, column, name);
         if (value != null) {

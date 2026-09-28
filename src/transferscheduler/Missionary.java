@@ -21,6 +21,7 @@ public class Missionary {
     private final boolean newMissionary;
     private final boolean male;
 
+    //assign the fields here
     public Missionary(String name, String companion1, String companion2,
                       String currentArea, String nextArea,
                       boolean goingHome, boolean newMissionary, boolean male) {
@@ -34,6 +35,7 @@ public class Missionary {
         this.male = male;
     }
 
+    //necessary getters!
     public String getName()          { return name; }
     public String getCurrentArea()   { return currentArea; }
     public String getNextArea()      { return nextArea; }
@@ -41,7 +43,8 @@ public class Missionary {
     public boolean isNewMissionary() { return newMissionary; }
     public boolean isMale()          { return male; }
 
-    /** The non-NaN companions, in order (companion_1 then companion_2). May be empty. */
+
+    // The non-NaN companions, in order (companion_1 then companion_2). Could be empty
     public List<String> getCompanions() {
         List<String> companions = new ArrayList<>();
         if (companion1 != null) companions.add(companion1);
@@ -49,6 +52,7 @@ public class Missionary {
         return Collections.unmodifiableList(companions);
     }
 
+    //print
     @Override
     public String toString() {
         return "Missionary{" + name + ": " + currentArea + " -> " + nextArea + "}";

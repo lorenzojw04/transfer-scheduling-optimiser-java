@@ -26,7 +26,7 @@ public class SnakeTracer {
         List<String> chain = new ArrayList<>();
         Set<String> visited = new LinkedHashSet<>();
 
-        // The main loop
+        // The main loop, keep going as long as there is a new name that has not been seen before
         while (currentName != null && !currentName.isEmpty() && !visited.contains(currentName)) {
             visited.add(currentName);
             chain.add(currentName);
@@ -42,12 +42,14 @@ public class SnakeTracer {
             List<Missionary> residents =
                     dataset.findResidents(missionary.getNextArea(), currentName);
 
+            //if no one is there, the chain ends! Otherwise take the first resident as the next person in the snake
             if (residents.isEmpty()) {
                 break;
             }
             currentName = residents.get(0).getName();
         }
 
+        //done!
         return new SnakeChain(chain, visited);
     }
 }

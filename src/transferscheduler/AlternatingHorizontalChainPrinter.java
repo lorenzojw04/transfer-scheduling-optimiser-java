@@ -4,10 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Python: print_alternating_horizontal_chain(df, chain)
- *
  * Prints the chain horizontally with alternating arrows between the top row
  * (missionaries) and bottom row (companions/Office) to reflect travel paths.
+ * This here is a direct translation from the python implementation!
  */
 public class AlternatingHorizontalChainPrinter extends ChainPrinter {
 

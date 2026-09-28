@@ -6,6 +6,8 @@ package transferscheduler;
  * (the dataset to look missionaries up in, the companion formatter,
  * and string padding).
  */
+
+//holds the two tools every printer needs
 public abstract class ChainPrinter {
 
     protected final MissionaryDataset dataset;
@@ -16,9 +18,10 @@ public abstract class ChainPrinter {
         this.companionFormatter = companionFormatter;
     }
 
+    //subclasses must implement how to actually print
     public abstract void print(SnakeChain chain);
 
-    /** Python: str.ljust(width) */
+    //Pads a string on the right with spaces so the columns line up
     protected static String padRight(String text, int width) {
         StringBuilder sb = new StringBuilder(text);
         while (sb.length() < width) {
